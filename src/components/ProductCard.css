@@ -1,0 +1,230 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+
+.card__media {
+  position: relative;
+  overflow: hidden;
+  background: var(--bone);
+}
+
+.card__frame {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+}
+
+.card--tall .card__frame {
+  aspect-ratio: 3 / 4.4;
+}
+
+.card__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    transform var(--t-image) var(--ease-out),
+    opacity var(--t-slow) var(--ease);
+}
+
+.card__img--alt {
+  opacity: 0;
+}
+
+@media (hover: hover) {
+  .card__media:hover .card__img {
+    transform: scale(1.035);
+  }
+
+  .card__media:hover .card__img--alt {
+    opacity: 1;
+  }
+}
+
+.card__tag {
+  position: absolute;
+  top: var(--s-4);
+  left: var(--s-4);
+  color: var(--ink);
+  background: var(--paper);
+  padding: 0.35em 0.7em 0.3em;
+  pointer-events: none;
+}
+
+.card__wish {
+  position: absolute;
+  top: var(--s-3);
+  right: var(--s-3);
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--ink);
+  background: rgb(249 246 241 / 0.9);
+  transition:
+    opacity var(--t-base) var(--ease),
+    transform var(--t-base) var(--ease);
+}
+
+.card__wish.is-on {
+  color: var(--sale);
+}
+
+.card__quick {
+  position: absolute;
+  left: var(--s-3);
+  right: var(--s-3);
+  bottom: var(--s-3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  min-height: 2.75rem;
+  padding: 0 var(--s-4);
+  background: rgb(249 246 241 / 0.94);
+  color: var(--ink);
+  transition:
+    opacity var(--t-base) var(--ease),
+    transform var(--t-base) var(--ease-out);
+}
+
+.card__sizes {
+  display: flex;
+  gap: var(--s-1);
+}
+
+.card__sizes button {
+  padding: 0.7em 0.55em;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--t-fast) var(--ease);
+}
+
+.card__sizes button:hover {
+  border-bottom-color: currentColor;
+}
+
+/* On pointer devices the controls wait for intent; on touch they stay visible */
+@media (hover: hover) {
+  .card__wish:not(.is-on) {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  .card__quick {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  .card__media:hover .card__wish,
+  .card__media:focus-within .card__wish,
+  .card__media:hover .card__quick,
+  .card__media:focus-within .card__quick {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (hover: none) {
+  .card__quick-label {
+    display: none;
+  }
+
+  .card__quick {
+    justify-content: flex-end;
+    left: auto;
+    padding: 0 var(--s-2);
+  }
+}
+
+.card__body {
+  position: relative;
+  display: grid;
+  gap: 0.2rem;
+  padding-right: var(--s-5);
+}
+
+.card__index {
+  position: absolute;
+  top: -0.1rem;
+  right: 0;
+}
+
+.card__brand {
+  color: var(--fg-muted);
+}
+
+.card__name {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  margin-top: 0.1rem;
+}
+
+.card__name a {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition: background-size var(--t-base) var(--ease);
+}
+
+.card__name a:hover {
+  background-size: 100% 1px;
+}
+
+.card__type {
+  font-size: var(--fs-small);
+  color: var(--fg-muted);
+}
+
+.card__foot {
+  display: grid;
+  justify-items: start;
+  gap: 0.3rem;
+  margin-top: var(--s-2);
+}
+
+/* Price */
+.price {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6em;
+  font-size: var(--fs-body);
+  font-weight: 420;
+  font-variant-numeric: tabular-nums;
+}
+
+.price__now.is-sale {
+  color: var(--sale);
+}
+
+.price__was {
+  font-size: var(--fs-small);
+  color: var(--fg-faint);
+}
+
+.price__off {
+  font-size: var(--fs-micro);
+  letter-spacing: 0.1em;
+  color: var(--sale);
+}
+
+/* Rating */
+.rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: var(--fs-small);
+  color: var(--fg-muted);
+}
+
+.rating__stars {
+  display: inline-flex;
+  gap: 1px;
+  color: var(--charcoal);
+}
