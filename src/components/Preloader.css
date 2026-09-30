@@ -4,8 +4,8 @@
   z-index: 300;
   display: grid;
   place-items: center;
-  background: var(--ivory);
-  color: var(--ink);
+  background: var(--night);
+  color: var(--champagne);
   clip-path: inset(0 0 0 0);
   transition: clip-path 1.1s var(--ease-in-out);
 }
@@ -28,29 +28,13 @@
   transform: translateY(-3rem);
 }
 
-.preloader__word {
-  display: flex;
-  overflow: hidden;
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 2rem + 5vw, 6.5rem);
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: 0.12em;
-  margin-right: -0.12em;
-}
-
-.preloader__word > span {
-  display: inline-block;
-  transform: translateY(110%);
-  animation: preloader-rise 1s var(--ease-out) forwards;
-}
-
-.preloader__sub {
-  color: var(--fg-muted);
-  letter-spacing: 0.5em;
-  margin-right: -0.5em;
+.preloader__logo {
+  width: clamp(15rem, 10rem + 22vw, 26rem);
+  height: auto;
   opacity: 0;
-  animation: preloader-fade 0.9s var(--ease) 0.7s forwards;
+  clip-path: inset(0 0 100% 0);
+  transform: translateY(12px);
+  animation: preloader-reveal 1.4s var(--ease-out) 0.1s forwards;
 }
 
 .preloader__foot {
@@ -62,20 +46,20 @@
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: var(--s-5);
-  color: var(--fg-muted);
+  color: var(--taupe);
 }
 
 .preloader__line {
   position: relative;
   height: 1px;
-  background: var(--line);
+  background: rgb(205 187 154 / 0.18);
   overflow: hidden;
 }
 
 .preloader__line > span {
   position: absolute;
   inset: 0;
-  background: var(--ink);
+  background: var(--champagne);
   transform-origin: left;
 }
 
@@ -84,15 +68,11 @@
   min-width: 3ch;
 }
 
-@keyframes preloader-rise {
-  to {
-    transform: none;
-  }
-}
-
-@keyframes preloader-fade {
+@keyframes preloader-reveal {
   to {
     opacity: 1;
+    clip-path: inset(0 0 0 0);
+    transform: none;
   }
 }
 
@@ -106,9 +86,9 @@
     opacity: 0;
   }
 
-  .preloader__word > span,
-  .preloader__sub {
+  .preloader__logo {
     animation: none;
+    clip-path: none;
     transform: none;
     opacity: 1;
   }

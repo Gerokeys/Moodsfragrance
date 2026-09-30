@@ -56,10 +56,14 @@ export function Footer() {
       <div className="wrap">
         <div className="footer__grid">
           <div className="footer__brand">
-            <p className="footer__word">MOODS</p>
-            <p className="footer__tag display">
-              <em>Find the fragrance that feels like you.</em>
-            </p>
+            <img
+              className="footer__logo"
+              src="/brand/logo-full.png"
+              width={900}
+              height={594}
+              alt="MOODS Fragrances — scents that match your mood. Nairobi, Kenya."
+              loading="lazy"
+            />
           </div>
 
           <nav aria-label="Shop" className="footer__col">

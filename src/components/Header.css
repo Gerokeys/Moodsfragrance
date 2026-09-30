@@ -86,9 +86,25 @@
 }
 
 .header__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  line-height: 1;
+}
+
+/* The monogram is drawn through a mask so it takes the header's ink colour */
+.logo-mark {
+  display: block;
+  height: 2.4rem;
+  aspect-ratio: 320 / 299;
+  background: currentColor;
+  -webkit-mask: url('/brand/mark.png') center / contain no-repeat;
+  mask: url('/brand/mark.png') center / contain no-repeat;
+}
+
+.header__logo-text {
   display: grid;
   justify-items: center;
-  line-height: 1;
 }
 
 .header__logo-word {
@@ -133,6 +149,18 @@
 
   .header__logo-sub {
     display: none;
+  }
+
+  .header__logo {
+    gap: 0.45rem;
+  }
+
+  .header__logo .logo-mark {
+    height: 2rem;
+  }
+
+  .header__logo-word {
+    font-size: 1.25rem;
   }
 
   .header__utils {

@@ -84,21 +84,12 @@ export function Preloader({ onDone }: { onDone: () => void }) {
   return (
     <div className={`preloader ${leaving ? 'is-leaving' : ''}`} role="status" aria-live="polite">
       <div className="preloader__mark">
-        <span className="preloader__word" aria-hidden="true">
-          {'MOODS'.split('').map((ch, i) => (
-            <span key={i} style={{ animationDelay: `${120 + i * 70}ms` }}>
-              {ch}
-            </span>
-          ))}
-        </span>
-        <span className="preloader__sub micro" aria-hidden="true">
-          Fragrances
-        </span>
+        <img className="preloader__logo" src="/brand/logo-full.png" width={900} height={594} alt="" decoding="async" />
         <span className="sr-only">Loading MOODS Fragrances</span>
       </div>
 
       <div className="preloader__foot" aria-hidden="true">
-        <span className="micro">Nairobi</span>
+        <span className="micro">A fragrance house</span>
         <span className="preloader__line">
           <span style={{ transform: `scaleX(${progress})` }} />
         </span>

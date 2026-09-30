@@ -62,8 +62,11 @@ export function Header() {
           </button>
 
           <Link to="/" className="header__logo" aria-label="MOODS Fragrances — home">
-            <span className="header__logo-word">MOODS</span>
-            <span className="header__logo-sub">Fragrances</span>
+            <span className="logo-mark" aria-hidden="true" />
+            <span className="header__logo-text">
+              <span className="header__logo-word">MOODS</span>
+              <span className="header__logo-sub">Fragrances</span>
+            </span>
           </Link>
 
           <div className="header__utils">
@@ -112,6 +115,7 @@ function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
     >
       <div className="menu__top">
         <span className="header__logo">
+          <span className="logo-mark" aria-hidden="true" />
           <span className="header__logo-word">MOODS</span>
         </span>
         <button type="button" className="menu__close label" onClick={onClose} data-autofocus>
